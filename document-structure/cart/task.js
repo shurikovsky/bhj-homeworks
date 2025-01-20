@@ -17,10 +17,9 @@ product.forEach((element) => {
       const productsInCart = document.querySelector('.cart__products');
       const productPicture = element.querySelector('img');
       const newProductInCart = document.createElement('div');
-      const productFind = [... productsInCart.querySelectorAll('.cart__product')].find((item) => {
-        item.getAttribute('data-id') === element.getAttribute('data-id');  
- //не могу понять, почему не работает((
-        });
+      const productFind = [... productsInCart.querySelectorAll('.cart__product')].find((item) => 
+        item.getAttribute('data-id') === element.getAttribute('data-id')  
+        );
       if (productFind) {
         productFind.querySelector('.cart__product-count').textContent = +productFind.querySelector('.cart__product-count').textContent + parseInt(productCount.textContent);
       } else {

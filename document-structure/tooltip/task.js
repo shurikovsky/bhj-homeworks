@@ -2,21 +2,25 @@ const hasTooltip = [... document.getElementsByClassName('has-tooltip')];
 
 
 hasTooltip.forEach((item, index) => {
-    const div =  document.createElement('div');
-    item.appendChild(div);
-    div.innerHTML = item.getAttribute('title');
-    div.classList.add('tooltip');
+    let div = '<div class="tooltip"; style="left: 0; top: 0">' + item.getAttribute('title') + '</div>'
+    item.insertAdjacentHTML("afterend", div);
   })
+
   const title = [... document.getElementsByClassName('tooltip')];
 hasTooltip.forEach((item, index, array) => {
     item.addEventListener('click', (e) => {
       e.preventDefault();
-      title.forEach((elem) => elem.classList.remove('tooltip_active'));
-      let rect = item.getBoundingClientRect();
-      console.log(rect.left);
-      title[index].classList.add('tooltip_active');
-      title[index].style.top = rect.top + 20 + 'px';
-      title[index].style.left = rect.left + 'px';
-      console.log(title[index].style.left);
-    })
+      if (item.getAttribute('title') === title[index].textContent) {
+        title[index].classList.toggle('tooltip_active');
+      } else { 
+        title.forEach((element) => {
+          element.classList.remove('tooltip_active');
+        });
+        let rect = item.getBoundingClientRect();
+        title[index].classList.toggle('tooltip_active');
+        title[index].style.top = rect.top + 20 + 'px';
+        title[index].style.left = rect.left + 'px';
+      };
+    });
 })
+
