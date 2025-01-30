@@ -14,6 +14,7 @@ form.addEventListener('submit', (event) => {
     '</div>' +
     '<a href="#" class="task__remove">&times;</a>' +
   '</div>';
+  input.value = '';
   taskList.append(newElement);
   const elementRemove = newElement.querySelector(".task__remove");
   elementRemove.addEventListener('click', () => {
