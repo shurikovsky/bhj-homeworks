@@ -11,8 +11,8 @@ hasTooltip.forEach((item, index, array) => {
         div = document.createElement('div');
         item.insertAdjacentElement('afterend', div);
         div.outerHTML = '<div class="tooltip" style="left: 0; top: 0"></div>';      
-        div = item.nextElementSibling;
       }
+        div = item.nextElementSibling;
         let rect = item.getBoundingClientRect();
         div.style.top = rect.top + 20 + 'px';
         div.style.left = rect.left + 'px';
